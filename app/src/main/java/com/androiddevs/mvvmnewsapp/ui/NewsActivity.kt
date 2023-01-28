@@ -7,11 +7,9 @@ import androidx.navigation.ui.setupWithNavController
 import com.androiddevs.mvvmnewsapp.R
 import kotlinx.android.synthetic.main.activity_news.*
 
-// TODO implement ViewBinding, remove deprecated extensions plugin
-
 /*
 * Step 0 - renaming MainActivity to NewsActivity (renaming layout to activity_news),
-*          adding UI package, adding fragments package inside ui package
+*          creating packages for MVVM structure
 *
 * Step 1 - SETTING UP NAVIGATION (navigating between UI fragments)
 *   1.1 - add newsNavHostFragment to layout, that uses navGraph (not yet created)
@@ -26,6 +24,14 @@ import kotlinx.android.synthetic.main.activity_news.*
 *         (copy a JSON from our API - newsapi.org -> new Kotlin Data class from JSON and as a result
 *         we get 3 data classes - NewsResponse (this name I entered) and Article and Source (created
 *         automatically from JSON by inferring)
+*   2.2 - create API interface - NewsAPI.kt
+*   2.3 - create RetrofitInstance - singleton class that allows us to make requests from anywhere in our code
+*
+* Step 3 - SETTING UP ROOM AND DATA ACCESS OBJECT (DAO) - for saving articles to local database
+*   3.1 - Annotate Article class with @Entity (that way it will be a table in a room data base)
+*   3.2 - Add id parameter and @PrimaryKey(autoGenerate = true) parameter to Article data class
+*   3.3 - Creating DAO interface - ArticleDao.kt, which is like API, but for our local database,
+*         this interface defines functions to insert/updateR, retrieve, delete articles from our local DB.
 * */
 
 class NewsActivity : AppCompatActivity() {
