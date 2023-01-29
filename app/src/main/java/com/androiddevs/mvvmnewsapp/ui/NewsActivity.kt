@@ -64,12 +64,19 @@ import kotlinx.android.synthetic.main.activity_news.*
 * STEP 7 - MAKING NETWORK REQUEST, HANDLING BREAKING NEWS RESPONSE AND DISPLAYING RESPONSE IN RECYCLER VIEW
 *    7.1 - in NewsRepository.kt create fun to get breaking new from API
 *    7.2 - in NewsViewModel.kt create val breakingNews (a LiveData object) and fun getBreakingNews
-*    7.3 - in BreakingNews.kt fragment create newsAdapter instance
+*    7.3 - in BreakingNewsFragment.kt create newsAdapter instance
 *    7.4 - in NewsViewModel make API request (call getBreakingNews() )
 *    7.5 - add internet permission in manifest
 *
-* APP WAS CRASHING - found solution
-* in activity_news.xml replace <fragment> with FragmentContainer and change code at bottom of this file
+*          APP CRASHING ON LAUNCH - SOLVED
+*          in activity_news.xml replace <fragment> with FragmentContainer and change code at
+*          bottom of this file
+*
+* STEP 8 - SETTING UP SEARCH
+*    8.1 - in NewsRepository.kt create fun searchNews()
+*    8.2 - in NewsViewModel create fun handleSearchNewsResponse() and searchNews()
+*    8.3 - in SearchNewsFragment setup recyclerview (like in 7.3)
+*    8.4 - add delay before search starts (so we can finish writing the search request)
 * */
 
 class NewsActivity : AppCompatActivity() {

@@ -13,7 +13,8 @@ import kotlinx.android.synthetic.main.item_article_preview.view.*
 
 // using DiffUtil instead of NotifyDataSetChanged
 
-/* This code defines a class called NewsAdapter, which is a custom implementation of the
+/**
+* This code defines a class called NewsAdapter, which is a custom implementation of the
 * RecyclerView.Adapter class. This adapter is used to display a list of articles in a RecyclerView.
 
 * The class defines an inner class ArticleViewHolder which takes a single parameter, itemView of type
