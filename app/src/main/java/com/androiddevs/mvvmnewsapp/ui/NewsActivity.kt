@@ -60,6 +60,13 @@ import kotlinx.android.synthetic.main.activity_news.*
 *    6.6 - create Resource class in util package (class recommended by Google to wrap around network
 *          responses. It's a Generic class and useful for differentiating between successful and
 *          error responses and also helps us to handle loading state)
+*
+* STEP 7 - MAKING NETWORK REQUEST, HANDLING BREAKING NEWS RESPONSE AND DISPLAYING RESPONSE IN RECYCLER VIEW
+*    7.1 - in NewsRepository.kt create fun to get breaking new from API
+*    7.2 - in NewsViewModel.kt create val breakingNews (a LiveData object) and fun getBreakingNews
+*    7.3 - in BreakingNews.kt fragment create newsAdapter instance
+*    7.4 - in NewsViewModel make API request (call getBreakingNews() )
+*    7.5 - add internet permission in manifest
 * */
 
 class NewsActivity : AppCompatActivity() {
@@ -74,7 +81,7 @@ class NewsActivity : AppCompatActivity() {
         //step  6.4
         val newsRepository = NewsRepository(ArticleDatabase(this))
         val viewModelProviderFactory = NewsViewModelProviderFactory(newsRepository)
-        viewModel = ViewModelProvider(this, viewModelProviderFactory).get(NewsViewModel::class.java)
+        viewModel = ViewModelProvider(this, viewModelProviderFactory)[NewsViewModel::class.java]
 
 
         // 1.5 - connecting bottom navigation view with navigation components
