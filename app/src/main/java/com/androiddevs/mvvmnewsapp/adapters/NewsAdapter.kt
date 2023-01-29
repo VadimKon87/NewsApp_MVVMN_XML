@@ -19,6 +19,14 @@ import kotlinx.android.synthetic.main.item_article_preview.view.*
 * The class defines an inner class ArticleViewHolder which takes a single parameter, itemView of type
 * View, and it's the constructor. It is a RecyclerView.ViewHolder class, which is used to hold the
 * views for each item in the list.
+*
+* A ViewHolder is a pattern used in RecyclerView adapter in Android to improve the performance
+* of the user interface by reducing the number of calls to findViewById().
+
+* The ViewHolder holds the references to the views in the layout for each data item, so that the
+* adapter can reuse these views as the user scrolls through the list, instead of calling
+* findViewById() for every item in the list, which is slow. This significantly improves the
+* scrolling performance of the RecyclerView.
 
 * The private val differCallback is an object of DiffUtil.ItemCallback which is used to determine
 * whether two items are the same and whether their contents are the same.
@@ -57,7 +65,7 @@ class NewsAdapter : RecyclerView.Adapter<NewsAdapter.ArticleViewHolder>() {
         }
     }
 
-    // the tool that compares our two lists, will run in background
+    // the tool that compares our two lists, it will run in background
     val differ = AsyncListDiffer(this, differCallback)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ArticleViewHolder {
@@ -72,6 +80,7 @@ class NewsAdapter : RecyclerView.Adapter<NewsAdapter.ArticleViewHolder>() {
 
     override fun onBindViewHolder(holder: ArticleViewHolder, position: Int) {
         val article = differ.currentList[position]
+
         holder.itemView.apply {
             Glide.with(this).load(article.urlToImage).into(ivArticleImage)
             tvSource.text = article.source.name

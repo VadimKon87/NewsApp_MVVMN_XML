@@ -2,9 +2,12 @@ package com.androiddevs.mvvmnewsapp.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.androiddevs.mvvmnewsapp.R
+import com.androiddevs.mvvmnewsapp.db.ArticleDatabase
+import com.androiddevs.mvvmnewsapp.repository.NewsRepository
 import kotlinx.android.synthetic.main.activity_news.*
 
 /*
@@ -44,13 +47,35 @@ import kotlinx.android.synthetic.main.activity_news.*
 *    5.1 - create NewsAdapter.kt class in adapters package
 *    5.2 - add AsyncListDiffer to NewsAdapter.kt
 *    5.3 - implement RecyclerView functions (ctrl + i)
+*
+* STEP 6 - SETTING UP ARCHITECTURAL SKELETON OF APP (VIEW MODEL, REPOSITORY, VIEW MODEL PROVIDER
+*          FACTORY AND WRAPPER CLASS AROUND OUR NETWORK RESPONSES)
+*    6.1 - create NewsViewModel.kt class in ui package
+*    6.2 - create NewsRepository.kt class in repository package
+*    6.3 - create NewsViewModelProviderFactory.kt in ui package (we need factory because our
+*          viewmodel takes parameters in the constructor and by default viewmodelprovider can only
+*          create it without parameters)
+*    6.4 - in NewsActivity.kt (this file) create instances of above classes
+*    6.5 - in each of fragment classes add viewModel and override fun onViewCreated
+*    6.6 - create Resource class in util package (class recommended by Google to wrap around network
+*          responses. It's a Generic class and useful for differentiating between successful and
+*          error responses and also helps us to handle loading state)
 * */
 
 class NewsActivity : AppCompatActivity() {
 
+    // step 6.4
+    lateinit var viewModel: NewsViewModel
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_news)
+
+        //step  6.4
+        val newsRepository = NewsRepository(ArticleDatabase(this))
+        val viewModelProviderFactory = NewsViewModelProviderFactory(newsRepository)
+        viewModel = ViewModelProvider(this, viewModelProviderFactory).get(NewsViewModel::class.java)
+
 
         // 1.5 - connecting bottom navigation view with navigation components
         bottomNavigationView.setupWithNavController(newsNavHostFragment.findNavController())
