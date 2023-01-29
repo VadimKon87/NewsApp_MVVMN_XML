@@ -3,7 +3,7 @@ package com.androiddevs.mvvmnewsapp.ui
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.androiddevs.mvvmnewsapp.R
 import com.androiddevs.mvvmnewsapp.db.ArticleDatabase
@@ -67,6 +67,9 @@ import kotlinx.android.synthetic.main.activity_news.*
 *    7.3 - in BreakingNews.kt fragment create newsAdapter instance
 *    7.4 - in NewsViewModel make API request (call getBreakingNews() )
 *    7.5 - add internet permission in manifest
+*
+* APP WAS CRASHING - found solution
+* in activity_news.xml replace <fragment> with FragmentContainer and change code at bottom of this file
 * */
 
 class NewsActivity : AppCompatActivity() {
@@ -85,6 +88,11 @@ class NewsActivity : AppCompatActivity() {
 
 
         // 1.5 - connecting bottom navigation view with navigation components
-        bottomNavigationView.setupWithNavController(newsNavHostFragment.findNavController())
+        //bottomNavigationView.setupWithNavController(newsNavHostFragment.findNavController())
+
+        //replaced above code with this after replacing <fragment> with FragmentContainer
+        val navHostFragment = supportFragmentManager.findFragmentById(R.id.newsNavHostFragment) as NavHostFragment
+        val navController = navHostFragment.navController
+        bottomNavigationView.setupWithNavController(navController)
     }
 }
