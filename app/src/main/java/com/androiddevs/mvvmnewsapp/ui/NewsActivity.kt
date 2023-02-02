@@ -77,6 +77,13 @@ import kotlinx.android.synthetic.main.activity_news.*
 *    8.2 - in NewsViewModel create fun handleSearchNewsResponse() and searchNews()
 *    8.3 - in SearchNewsFragment setup recyclerview (like in 7.3)
 *    8.4 - add delay before search starts (so we can finish writing the search request)
+*
+* STEP 9 - SHOWING ARTICLES IN WEBVIEW
+*    9.1 - in Article.kt add that Article class inherits from Serializable
+*    9.2 - in news_nav_graph.xml in visual mode add argument to articleFragment
+*    9.3 - in every fragment class (except article) set a click listener on the "newsAdapter" object,
+*          so when we click it we transfer to article fragment
+*    9.4 - in ArticleFragment.kt
 * */
 
 class NewsActivity : AppCompatActivity() {

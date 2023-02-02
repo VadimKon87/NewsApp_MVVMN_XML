@@ -2,6 +2,7 @@ package com.androiddevs.mvvmnewsapp.models
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import java.io.Serializable
 
 // this annotation tells android studio that this is will be a table in our database
 // with author, content, description, etc. columns and each row will be an entry
@@ -20,4 +21,6 @@ data class Article(
     val title: String,
     val url: String,
     val urlToImage: String
-)
+
+    //step 9.1
+) : Serializable

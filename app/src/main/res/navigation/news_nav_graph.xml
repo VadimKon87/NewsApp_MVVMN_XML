@@ -35,7 +35,7 @@
         android:name="com.androiddevs.mvvmnewsapp.ui.fragments.SearchNewsFragment"
         android:label="SearchNewsFragment" >
         <action
-            android:id="@+id/action_searchNewsFragment_to_articleFragment2"
+            android:id="@+id/action_searchNewsFragment_to_articleFragment"
             app:destination="@id/articleFragment"
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left"
@@ -46,6 +46,11 @@
     <fragment
         android:id="@+id/articleFragment"
         android:name="com.androiddevs.mvvmnewsapp.ui.fragments.ArticleFragment"
-        android:label="ArticleFragment" />
+        android:label="ArticleFragment" >
+        <!--step 9.2 (done is design mode) -->
+        <argument
+            android:name="article"
+            app:argType="com.androiddevs.mvvmnewsapp.models.Article" />
+    </fragment>
 
 </navigation>
