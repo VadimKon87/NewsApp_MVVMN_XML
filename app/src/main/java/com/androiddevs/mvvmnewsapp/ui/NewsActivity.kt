@@ -84,6 +84,7 @@ import kotlinx.android.synthetic.main.activity_news.*
 *    9.3 - in every fragment class (except article) set a click listener on the "newsAdapter" object,
 *          so when we click it we transfer to article fragment
 *    9.4 - in ArticleFragment.kt
+*    9.+ - Fixed NullPointerException (override hashCode() in Article.kt class)
 * */
 
 class NewsActivity : AppCompatActivity() {

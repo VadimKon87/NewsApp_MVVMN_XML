@@ -47,7 +47,6 @@
         android:id="@+id/articleFragment"
         android:name="com.androiddevs.mvvmnewsapp.ui.fragments.ArticleFragment"
         android:label="ArticleFragment" >
-        <!--step 9.2 (done is design mode) -->
         <argument
             android:name="article"
             app:argType="com.androiddevs.mvvmnewsapp.models.Article" />

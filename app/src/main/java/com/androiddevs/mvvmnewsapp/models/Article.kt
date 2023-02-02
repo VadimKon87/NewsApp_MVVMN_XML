@@ -23,4 +23,14 @@ data class Article(
     val urlToImage: String
 
     //step 9.1
-) : Serializable
+) : Serializable {
+
+    // step 9+ to fix NullPointerException error
+    override fun hashCode(): Int {
+        var result = id.hashCode()
+        if(url.isNullOrEmpty()){
+            result = 31 * result + url.hashCode()
+        }
+        return result
+    }
+}

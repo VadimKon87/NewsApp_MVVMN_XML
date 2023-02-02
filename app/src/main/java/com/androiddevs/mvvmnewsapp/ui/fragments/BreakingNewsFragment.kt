@@ -34,7 +34,7 @@ class BreakingNewsFragment : Fragment(R.layout.fragment_breaking_news) {
         //STEP 9.3
         /*
         * This code sets a click listener on the "newsAdapter" object and defines the behavior that
-        *  should occur when an item in the adapter is clicked. The listener takes as an argument
+        * should occur when an item in the adapter is clicked. The listener takes as an argument
         * an "article" object, creates a Bundle object and adds the "article" object to it as a
         * serializable item under the key "article". Finally, the code uses the "findNavController()"
         * method to navigate to a different fragment (the "articleFragment") by following the action
