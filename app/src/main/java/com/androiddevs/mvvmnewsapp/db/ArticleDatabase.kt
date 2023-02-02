@@ -34,7 +34,7 @@ import com.androiddevs.mvvmnewsapp.models.Article
 
 @Database(
     entities = [Article::class], // we only have one table in our database
-    version = 1 // version is used to update db, so if we make changes, we need to update version
+    version = 2 // version is used to update db, so if we make changes, we need to update version
 )
 @TypeConverters(Converters::class)
 abstract class ArticleDatabase : RoomDatabase() {

@@ -91,6 +91,18 @@ import kotlinx.android.synthetic.main.activity_news.*
 *    10.2 - in NewsViewModel.kt call the above functions
 *    10.3 - in ArticleFragment.kt add ability to save articles
 *    10.4 - in SavedNewsFragment.kt observe the changes in the database
+*
+* STEP 11 - PAGINATION WITH RETROFIT (SCROLLING)
+*    11.1 - in NewsViewModel.kt add code
+*    11.2 - in NewsResponse.dt data class change parameter articles to Mutable list
+*    11.3 - in BreakingNewsFragment.kt add code
+*    11.4 - in SearchNewsFragment.kt add same code as previous step
+*
+* BUG FIX FROM STEP 10 - (app can NPE when attempt to save article with null parameters)
+*    10.5 - in Article.kt make parameters nullable
+*    10.6 - in NewsAdapter.kt add safe call
+*    BUG  - error that says to update database version
+*    10.7 - in ArticleDatabase in @Database annotation change version from 1 to 2
 * */
 
 class NewsActivity : AppCompatActivity() {
