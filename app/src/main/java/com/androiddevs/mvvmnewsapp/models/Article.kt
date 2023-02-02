@@ -28,7 +28,7 @@ data class Article(
     // step 9+ to fix NullPointerException error
     override fun hashCode(): Int {
         var result = id.hashCode()
-        if(url.isNullOrEmpty()){
+        if(url.isEmpty()){
             result = 31 * result + url.hashCode()
         }
         return result

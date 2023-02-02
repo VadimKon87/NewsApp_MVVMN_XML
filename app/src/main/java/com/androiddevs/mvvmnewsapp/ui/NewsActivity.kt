@@ -85,6 +85,12 @@ import kotlinx.android.synthetic.main.activity_news.*
 *          so when we click it we transfer to article fragment
 *    9.4 - in ArticleFragment.kt
 *    9.+ - Fixed NullPointerException (override hashCode() in Article.kt class)
+*
+* STEP 10 - ADDING AND DELETING ARTICLE IN ROOM DATABASE
+*    10.1 - in NewsRepository.kt add the functions from interface - ArticleDAO.kt
+*    10.2 - in NewsViewModel.kt call the above functions
+*    10.3 - in ArticleFragment.kt add ability to save articles
+*    10.4 - in SavedNewsFragment.kt observe the changes in the database
 * */
 
 class NewsActivity : AppCompatActivity() {
