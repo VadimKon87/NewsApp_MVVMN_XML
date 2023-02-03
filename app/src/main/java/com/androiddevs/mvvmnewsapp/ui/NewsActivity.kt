@@ -98,11 +98,19 @@ import kotlinx.android.synthetic.main.activity_news.*
 *    11.3 - in BreakingNewsFragment.kt add code
 *    11.4 - in SearchNewsFragment.kt add same code as previous step
 *
-* BUG FIX FROM STEP 10 - (app can NPE when attempt to save article with null parameters)
+* BUG FIX FROM STEP 10 - (app can throw NPE when attempt to save article with null parameters)
 *    10.5 - in Article.kt make parameters nullable
 *    10.6 - in NewsAdapter.kt add safe call
-*    BUG  - error that says to update database version
-*    10.7 - in ArticleDatabase in @Database annotation change version from 1 to 2
+*
+* STEP 12 - NO INTERNET CHECKING (app crashes if no internet)
+*    12.1 - in NewsViewModel.kt change class that we inherit from ViewModel() to AndroidViewModel()
+*    12.2 - create Application.kt class - required as parameter for AndroidViewModel()
+*           and add it to Manifest
+*    12.3 - in NewsViewModel.kt create function that checks if there is an internet connection
+*    12.4 - in NewsViewModel.kt create fun to catch exceptions
+*    12.5 - in NewsViewModelProviderFactory.kt add app parameter and in this file add application
+*           parameter to val viewModelProviderFactory
+*    12.6 - in BreakingNewsFragment and SearchNewsFragment add Toast to display No internet error
 * */
 
 class NewsActivity : AppCompatActivity() {
@@ -114,9 +122,9 @@ class NewsActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_news)
 
-        //step  6.4
+        //step  6.4 (+ 12.5)
         val newsRepository = NewsRepository(ArticleDatabase(this))
-        val viewModelProviderFactory = NewsViewModelProviderFactory(newsRepository)
+        val viewModelProviderFactory = NewsViewModelProviderFactory(application, newsRepository) //12.5 add application
         viewModel = ViewModelProvider(this, viewModelProviderFactory)[NewsViewModel::class.java]
 
 

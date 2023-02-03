@@ -1,10 +1,8 @@
 package com.androiddevs.mvvmnewsapp.db
 
 import android.content.Context
-import androidx.room.Database
-import androidx.room.Room
-import androidx.room.RoomDatabase
-import androidx.room.TypeConverters
+import androidx.room.*
+import androidx.room.migration.Migration
 import com.androiddevs.mvvmnewsapp.models.Article
 
 /*
@@ -34,7 +32,9 @@ import com.androiddevs.mvvmnewsapp.models.Article
 
 @Database(
     entities = [Article::class], // we only have one table in our database
-    version = 2 // version is used to update db, so if we make changes, we need to update version
+    version = 1, // version is used to update db, so if we make changes, we need to update version
+    //exportSchema = false
+    //autoMigrations = [ AutoMigration(from = 1, to = 2) ], exportSchema = false
 )
 @TypeConverters(Converters::class)
 abstract class ArticleDatabase : RoomDatabase() {
@@ -63,7 +63,7 @@ abstract class ArticleDatabase : RoomDatabase() {
             Room.databaseBuilder(
                 context.applicationContext,
                 ArticleDatabase::class.java,
-                "article_db.db"
+                "article_db.db",
             ).build()
     }
 }

@@ -24,7 +24,7 @@ data class Article(
     val urlToImage: String?
 
     //step 9.1
-) : Serializable {
+) : Serializable /*{
 
     // step 9+ to fix NullPointerException error
     override fun hashCode(): Int {
@@ -34,4 +34,4 @@ data class Article(
         }
         return result
     }
-}
+}*/
